@@ -1,0 +1,1285 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block container %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker();
+    });
+    </script>
+    <style>
+        fieldset{
+            padding:5px;    
+            /* width:1000px;     */
+            line-height:1.8;    
+            margin: 0 auto;
+            border: 2px;
+            border-style: solid;
+            background-color:#CCC;
+            padding:16px;	
+}
+    </style>
+    <script>
+        $( function() {
+          $( "#datepicker" ).datepicker();
+        } );
+        </script>
+</head>
+<body>
+        
+        <form method="POST" action="" class="form-horizontal" >
+            {% csrf_token %}
+            {{ formset.management_form }}
+           
+            <fieldset>
+        
+                <legend><p>Details</p></legend>
+                {% for form2 in form %}
+                
+                <div class="row form-row spacer">
+                    <div class="col-8">
+                        <label> {{form2.name_of_fellow.label}}</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            {{form2.name_of_fellow}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-row spacer">
+                    <div class="col-8">
+                        <label id="datepicker"> {{form2.year_of_completion_of_ICOHRTA_feliowship_degree_programme.label}}</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            {{form2.year_of_completion_of_ICOHRTA_feliowship_degree_programme}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-row spacer">
+                    <div class="col-8">
+                        <label> {{form2.year_of_completion_of_ICOHRTA_feliowship_degree_programme_institution.label}}</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            {{form2.year_of_completion_of_ICOHRTA_feliowship_degree_programme_institution}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <label>Year of Completion of ICOHRTA Feliowship Degree Programme</label><br> -->
+               {% endfor %}
+              
+                    {% for form1 in formset1 %}
+
+                    <div class="row form-row9 spacer">
+                        <div class="col-8">
+                            <label>{{form1.position_s_held_since_completion_of_degree_programme1.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form1.position_s_held_since_completion_of_degree_programme1}}
+                                <!-- {{form1.position_s_held_since_completion_of_degree_programme1 | as_crispy_field}} -->
+                                <div class="input-group-append">
+                                    <button class="btn9 btn-success add-form-row9">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row10 spacer">
+                        <div class="col-8">
+                            <label>{{form1.position_held_since_completion_of_degree_programme_institution.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form1.position_held_since_completion_of_degree_programme_institution}}
+                                <!-- {{form1.position_s_held_since_completion_of_degree_programme1 | as_crispy_field}} -->
+                                <div class="input-group-append">
+                                    <button class="btn10 btn-success add-form-row10">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                {% for form in formset %}
+                    <div class="row form-row11 spacer">
+                        <div class="col-8">
+                            <label>{{form.current_position.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form.current_position}}
+                                <div class="input-group-append">
+                                    <!-- <button class="btn11 btn-success add-form-row11">+</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row8 spacer">
+                        <div class="col-8">
+                            <label>{{form.current_position_institution.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form.current_position_institution}}
+                                <div class="input-group-append">
+                                    <!-- <button class="btn8 btn-success add-form-row8">+</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+                </fieldset>
+                
+        
+                <br>
+            <p></p>
+
+            <fieldset>
+                <legend><p>Achievements</p></legend>
+                Briefly describe your career progression since the fellowship ended. Please include Scientific publications, grants applied for and any other information that you may want to share
+         
+            
+            <br>
+            <p></p>
+
+        
+                <legend><p>1. Scientific Publications</p></legend>
+                {% for form3 in formset3 %}
+                <div class="row form-row7 spacer">
+                    <div class="col-8">
+                        <label>{{form3.scientific_publications_1.label}}</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            {{form3.scientific_publications_1}}
+                            <div class="input-group-append">
+                                <button class="btn7 btn-success add-form-row7">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    
+            
+            <br>
+            <p></p>
+
+   
+                <legend><p>2. Grants Applied for</p></legend>
+                {% for form4 in formset4 %}
+                    <div class="row form-row6 spacer">
+                        <div class="col-8">
+                            <label>{{form4.grants_applied_for_1.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form4.grants_applied_for_1}}
+                                <div class="input-group-append">
+                                    <button class="btn6 btn-success add-form-row6">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+   
+
+            <br>
+            <p></p>
+
+                <legend><p>3. Grants Awarded</p></legend>
+                    <p>a. Award Number/Sponsor. Provide the full award number (or Sponsor name and identifier, if not NIH).</p> 
+                    {% for form5 in formset5 %}
+                    <div class="row form-row5 spacer">
+                        <div class="col-8">
+                            <label>{{form5.award_number_or_sponsor_1.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form5.award_number_or_sponsor_1}}
+                                <div class="input-group-append">
+                                    <button class="btn5 btn-success add-form-row5">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p></p>
+                    <p>b. Project Period. Provide project period dates inclusive of the entire project period, in the format MM/YYYY-MM/YYYY </p>
+                    <p>Start Date</p>
+                    <div class="row form-row12 spacer">
+                        <div class="col-8">
+                            <label>{{form5.project_period_start_1.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form5.project_period_start_1}}
+                                <div class="input-group-append">
+                                    <button class="btn12 btn-success add-form-row12">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p></p>
+                    <br>
+                    <p>End Date</p>
+                    <div class="row form-row13 spacer">
+                        <div class="col-8">
+                            <label>{{form5.project_period_end_1.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form5.project_period_end_1}}
+                                <div class="input-group-append">
+                                    <button class="btn13 btn-success add-form-row13">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p></p>
+                    <p>c. PD/PI. Provide the name of the PD/PI(s), in the format Last Name, First Name Middle Initial. </p>
+                    <div class="row form-row4 spacer">
+                        <div class="col-8">
+                            <label>{{form5.pd_or_pi_1.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form5.pd_or_pi_1}}
+                                <div class="input-group-append">
+                                    <button class="btn4 btn-success add-form-row4">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <p></p>
+                    <p>d. Number of Trainees Supported. Provide the number of trainees supported for at least one person-month by the award.</p>      
+                    <div class="row form-row3 spacer">
+                        <div class="col-8">
+                            <label>{{form5.number_of_trainees_supported_1.label}}</label>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                {{form5.number_of_trainees_supported_1}}
+                                <div class="input-group-append">
+                                    <button class="btn3 btn-success add-form-row3">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </fieldset>
+
+            <br>
+            <p></p>
+
+            <fieldset>
+                <legend><p>4. Mentors (list your mentors during the fellowship and their institutional affiliation)</p></legend>
+                {% for form6 in formset6 %}
+                <div class="row form-row2 spacer">
+                    <div class="col-8">
+                        <label>{{form6.mentors_1.label}}</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            {{form6.mentors_1}}
+                            <div class="input-group-append">
+                                <button class="btn2 btn-success add-form-row2">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </fieldset>
+
+            <br>
+            <p></p>
+
+            <fieldset>
+                <legend><p>5. Mentees (List your mentees after the Fellowship and their institutional affiliation)</p></legend>
+                {% for form7 in formset7 %}
+                <div class="row form-row spacer">
+                    <div class="col-8">
+                        <label>{{form7.mentees_1.label}}</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            {{form7.mentees_1}}
+                            <div class="input-group-append">
+                                <button class="btn1 btn-success add-form-row">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </fieldset>
+
+            <br>
+            <p></p>
+        
+             <fieldset>
+                {% for form8 in form8 %}
+                <legend><p>5. Any other relevant information</p></legend>
+                <div class="row form-row14 spacer">
+                    <div class="col-8">
+                        <label>{{form8.any_other_relevant_information.label}}</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group">
+                            {{form8.any_other_relevant_information}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </fieldset>  
+                
+            <br>
+            <p></p>
+
+            <div class="row spacer">
+                <div class="col-4 offset-2" align=center>
+                    <button type="submit" class="btn btn-block btn-primary">Create</button>
+                </div>
+            </div>
+        {% endblock %} 
+        </form>
+</body>
+</html>
+
+{% block custom_js %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+    </script>
+<script type="text/javascript">
+function updateElementIndex(el, prefix, ndx) {
+    var id_regex = new RegExp('(' + prefix + '-\\d+)');
+    var replacement = prefix + '-' + ndx;
+    if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+    if (el.id) el.id = el.id.replace(id_regex, replacement);
+    if (el.name) el.name = el.name.replace(id_regex, replacement);
+}
+function cloneMore(selector, prefix) {
+    var newElement = $(selector).clone(true);
+    var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+    newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+        var name = $(this).attr('name')
+        if(name) {
+            name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+            var id = 'id_' + name;
+            $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+        }
+    });
+    newElement.find('label').each(function() {
+        var forValue = $(this).attr('for');
+        if (forValue) {
+          forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+          $(this).attr({'for': forValue});
+        }
+    });
+    total++;
+    $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+    $(selector).after(newElement);
+    var conditionRow = $('.form-row:not(:last)');
+    conditionRow.find('.btn1.add-form-row')
+    .removeClass('btn-success').addClass('btn-danger')
+    .removeClass('add-form-row').addClass('remove-form-row')
+    .html('-');
+    return false;
+}
+function deleteForm(prefix, btn) {
+    var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+    if (total > 1){
+        btn.closest('.form-row').remove();
+        var forms = $('.form-row');
+        $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+        for (var i=0, formCount=forms.length; i<formCount; i++) {
+            $(forms.get(i)).find(':input').each(function() {
+                updateElementIndex(this, prefix, i);
+            });
+        }
+    }
+    return false;
+}
+$(document).on('click', '.add-form-row', function(e){
+    e.preventDefault();
+    cloneMore('.form-row:last', 'form');
+    return false;
+});
+$(document).on('click', '.remove-form-row', function(e){
+    e.preventDefault();
+    deleteForm('form', $(this));
+    return false;
+});
+
+</script>
+<!-- 4 clone2 -->
+<script type="text/javascript">
+    function update2ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore2(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row2:not(:last)');
+        conditionRow.find('.btn2.add-form-row2')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row2').addClass('remove-form-row2')
+        .html('-');
+        return false;
+    }
+    function deleteForm2(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row2').remove();
+            var forms = $('.form-row2');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row2', function(e){
+        e.preventDefault();
+        cloneMore2('.form-row2:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row2', function(e){
+        e.preventDefault();
+        deleteForm2('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone3 -->
+<script type="text/javascript">
+    function update3ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore3(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row3:not(:last)');
+        conditionRow.find('.btn3.add-form-row3')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row3').addClass('remove-form-row3')
+        .html('-');
+        return false;
+    }
+    function deleteForm3(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row3').remove();
+            var forms = $('.form-row3');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row3', function(e){
+        e.preventDefault();
+        cloneMore3('.form-row3:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row3', function(e){
+        e.preventDefault();
+        deleteForm3('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone4 -->
+<script type="text/javascript">
+    function update4ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore4(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row4:not(:last)');
+        conditionRow.find('.btn4.add-form-row4')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row4').addClass('remove-form-row4')
+        .html('-');
+        return false;
+    }
+    function deleteForm4(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row4').remove();
+            var forms = $('.form-row4');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row4', function(e){
+        e.preventDefault();
+        cloneMore4('.form-row4:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row4', function(e){
+        e.preventDefault();
+        deleteForm4('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone5 -->
+<script type="text/javascript">
+    function update5ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore5(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row5:not(:last)');
+        conditionRow.find('.btn5.add-form-row5')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row5').addClass('remove-form-row5')
+        .html('-');
+        return false;
+    }
+    function deleteForm5(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row5').remove();
+            var forms = $('.form-row5');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row5', function(e){
+        e.preventDefault();
+        cloneMore5('.form-row5:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row5', function(e){
+        e.preventDefault();
+        deleteForm5('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone6 -->
+<script type="text/javascript">
+    function update6ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore6(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row6:not(:last)');
+        conditionRow.find('.btn6.add-form-row6')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row6').addClass('remove-form-row6')
+        .html('-');
+        return false;
+    }
+    function deleteForm6(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row6').remove();
+            var forms = $('.form-row6');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row6', function(e){
+        e.preventDefault();
+        cloneMore6('.form-row6:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row6', function(e){
+        e.preventDefault();
+        deleteForm6('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone7 -->
+<script type="text/javascript">
+    function update7ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore7(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row7:not(:last)');
+        conditionRow.find('.btn7.add-form-row7')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row7').addClass('remove-form-row7')
+        .html('-');
+        return false;
+    }
+    function deleteForm7(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row7').remove();
+            var forms = $('.form-row7');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row7', function(e){
+        e.preventDefault();
+        cloneMore7('.form-row7:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row7', function(e){
+        e.preventDefault();
+        deleteForm7('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+
+
+
+<!-- 4 clone9 -->
+<script type="text/javascript">
+    function update9ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore9(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row9:not(:last)');
+        conditionRow.find('.btn9.add-form-row9')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row9').addClass('remove-form-row9')
+        .html('-');
+        return false;
+    }
+    function deleteForm9(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row9').remove();
+            var forms = $('.form-row9');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row9', function(e){
+        e.preventDefault();
+        cloneMore9('.form-row9:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row9', function(e){
+        e.preventDefault();
+        deleteForm9('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone8 -->
+<script type="text/javascript">
+    function update8ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore8(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row8:not(:last)');
+        conditionRow.find('.btn8.add-form-row8')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row8').addClass('remove-form-row8')
+        .html('-');
+        return false;
+    }
+    function deleteForm8(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row8').remove();
+            var forms = $('.form-row8');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row8', function(e){
+        e.preventDefault();
+        cloneMore8('.form-row8:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row8', function(e){
+        e.preventDefault();
+        deleteForm8('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone10 -->
+<script type="text/javascript">
+    function update10ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore10(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row10:not(:last)');
+        conditionRow.find('.btn10.add-form-row10')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row10').addClass('remove-form-row10')
+        .html('-');
+        return false;
+    }
+    function deleteForm10(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row10').remove();
+            var forms = $('.form-row10');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row10', function(e){
+        e.preventDefault();
+        cloneMore10('.form-row10:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row10', function(e){
+        e.preventDefault();
+        deleteForm10('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone11 -->
+<script type="text/javascript">
+    function update11ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore11(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row11:not(:last)');
+        conditionRow.find('.btn11.add-form-row11')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row11').addClass('remove-form-row11')
+        .html('-');
+        return false;
+    }
+    function deleteForm11(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row11').remove();
+            var forms = $('.form-row11');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row11', function(e){
+        e.preventDefault();
+        cloneMore11('.form-row11:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row11', function(e){
+        e.preventDefault();
+        deleteForm11('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone12 -->
+<script type="text/javascript">
+    function update12ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore12(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row12:not(:last)');
+        conditionRow.find('.btn12.add-form-row12')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row12').addClass('remove-form-row12')
+        .html('-');
+        return false;
+    }
+    function deleteForm12(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row12').remove();
+            var forms = $('.form-row12');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row12', function(e){
+        e.preventDefault();
+        cloneMore12('.form-row12:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row12', function(e){
+        e.preventDefault();
+        deleteForm12('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+<!-- 4 clone13 -->
+<script type="text/javascript">
+    function update13ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore13(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row13:not(:last)');
+        conditionRow.find('.btn13.add-form-row13')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row13').addClass('remove-form-row13')
+        .html('-');
+        return false;
+    }
+    function deleteForm13(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row13').remove();
+            var forms = $('.form-row13');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row13', function(e){
+        e.preventDefault();
+        cloneMore13('.form-row13:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row13', function(e){
+        e.preventDefault();
+        deleteForm13('form', $(this));
+        return false;
+    });
+    
+    </script>
+
+
+<!-- 4 clone14 -->
+<script type="text/javascript">
+    function update14ElementIndex(el, prefix, ndx) {
+        var id_regex = new RegExp('(' + prefix + '-\\d+)');
+        var replacement = prefix + '-' + ndx;
+        if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+        if (el.id) el.id = el.id.replace(id_regex, replacement);
+        if (el.name) el.name = el.name.replace(id_regex, replacement);
+    }
+    function cloneMore14(selector, prefix) {
+        var newElement = $(selector).clone(true);
+        var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+        newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+            var name = $(this).attr('name')
+            if(name) {
+                name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+                var id = 'id_' + name;
+                $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            }
+        });
+        newElement.find('label').each(function() {
+            var forValue = $(this).attr('for');
+            if (forValue) {
+              forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+              $(this).attr({'for': forValue});
+            }
+        });
+        total++;
+        $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+        $(selector).after(newElement);
+        var conditionRow = $('.form-row14:not(:last)');
+        conditionRow.find('.btn14.add-form-row14')
+        .removeClass('btn-success').addClass('btn-danger')
+        .removeClass('add-form-row14').addClass('remove-form-row14')
+        .html('-');
+        return false;
+    }
+    function deleteForm14(prefix, btn) {
+        var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        if (total > 1){
+            btn.closest('.form-row14').remove();
+            var forms = $('.form-row14');
+            $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+            for (var i=0, formCount=forms.length; i<formCount; i++) {
+                $(forms.get(i)).find(':input').each(function() {
+                    updateElementIndex(this, prefix, i);
+                });
+            }
+        }
+        return false;
+    }
+    $(document).on('click', '.add-form-row14', function(e){
+        e.preventDefault();
+        cloneMore14('.form-row14:last', 'form');
+        return false;
+    });
+    $(document).on('click', '.remove-form-row14', function(e){
+        e.preventDefault();
+        deleteForm14('form', $(this));
+        return false;
+    });
+
+
+       if( $(':input[name$=year_of_completion_of_ICOHRTA_feliowship_degree_programme]').val() == ''){
+
+        
+        alert ("yeqr of completion in required");
+       }
+
+
+
+
+
+
+
+    
+    </script>
+{% endblock %}
